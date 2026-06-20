@@ -11,7 +11,7 @@ import SwiftUI
 struct iOSApp3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AgeSelectionView()
         }
     }
 }
