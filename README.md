@@ -71,5 +71,55 @@ iOSApp3/
     SpecimenImageCatalogue.swift
     SpecimenImageQueryResolver.swift
     Assets.xcassets
+```
+---
 
+## 🚀 Run Locally
 
+**Requirements**
+
+- Xcode 15+
+- iOS Simulator / iPhone running iOS 17+
+
+**Steps**
+
+1. Clone the repo:
+   
+```text
+git clone https://github.com/vibrant-impact/iOSApp3.git
+cd iOSApp3
+```
+
+2. Open in Xcode:
+
+```text
+open iOSApp3.xcodeproj
+```
+
+3. Select a simulator and run (⌘R).
+
+---
+
+## 🔎 Search Behavior
+
+- **Empty search query:** shows curated specimens for the active gallery.
+- **Non-empty search query:** runs live global GBIF search.
+- Global search currently:
+  1. Resolves best taxon via species/suggest
+  2. Searches occurrences by taxonKey + images
+  3. Falls back to text query when needed
+
+---
+
+## 📝 Notes
+
+- Some simulator logs like `UIAccessibilityLoaderWebShared` are runtime noise from Simulator and not app logic errors.
+- Network-dependent features (GBIF/Wikipedia image fetch) may vary by connectivity and upstream response quality.
+
+---
+
+## 🙌 Acknowledgements
+
+- Data services: **GBIF API**
+- Supplemental media fallback: **Wikipedia API**
+- Curated exhibit inspiration: Canadian Museum of Nature-style gallery organization
