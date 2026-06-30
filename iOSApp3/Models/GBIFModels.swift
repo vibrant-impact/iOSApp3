@@ -2,12 +2,13 @@
 //  GBIFModels.swift
 //  iOSApp3
 //
-//  Created by stephanie otteson on 2026-06-18.
+//  Created by stephanie otteson on 2026-06-28.
 //
 
 import Foundation
 
-struct GBIFData {
+/// Normalized taxonomic metadata used by UI cards and detail views.
+struct GBIFData: Codable, Hashable {
     let usageKey: Int?
     let scientificName: String?
     let canonicalName: String?
@@ -19,6 +20,7 @@ struct GBIFData {
     let family: String?
     let genus: String?
 
+    /// Indicates whether this model has at least one non-empty useful taxonomy field.
     var hasUsefulData: Bool {
         scientificName != nil ||
         canonicalName != nil ||
@@ -31,6 +33,7 @@ struct GBIFData {
     }
 }
 
+/// Raw response model for GBIF `/species/match` endpoint.
 struct GBIFSpeciesMatchResponse: Decodable {
     let usageKey: Int?
     let scientificName: String?
@@ -60,6 +63,7 @@ struct GBIFSpeciesMatchResponse: Decodable {
         case confidence
     }
 
+    /// Maps raw GBIF response model into app-level normalized `GBIFData`.
     func toGBIFData() -> GBIFData {
         GBIFData(
             usageKey: usageKey,
